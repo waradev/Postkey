@@ -1,0 +1,111 @@
+<html>
+	<head>
+    <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
+    <!-- フォント -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./style.css" />
+		<!-- Font Awesome -->
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+		/>
+		<!-- Google Fonts -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+		/>
+		<!-- Bootstrap core CSS -->
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<!-- Material Design Bootstrap -->
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+			rel="stylesheet"
+		/>
+		<!-- google material icons-->
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<main>
+			<div class="box1 container">
+				<section id="title">
+					<div class="text-center darken-grey-text mb-4">	
+							<img
+					src="https://media.discordapp.net/attachments/685322149350998089/800434304769196082/3_3.png"
+					alt=""
+					class="topImg"
+				/>
+					</div>
+				</section>
+			</div>
+			<div class="boxA">
+				<!-- 話した音声表示 -->
+				<div class="box2">
+					<div class="speechText col-12" id="content"></div>
+				</div>
+				<!-- roomの作成 -->
+				<div class="box3 text-center">
+					<div class="roomSelect col-12">
+						<div>
+							<input type="text" value="" id="roomName" />
+						</div>
+						<!-- ボタン類 -->
+						<button type="submit" class="btn btn-default" onclick="newRoom()">
+							ルーム作成
+						</button>
+            
+						<div>
+							<h3>ルーム選択</h3>
+              <select name="sources" id="sources" class="custom-select sources" placeholder="Source Type" v-model="selected">
+                  <!-- スプレットシートのイベント名の配列 -->
+                  <option value="none">選択してください</option>
+                  <? for (var i = 0; i < sn.length; i++) { ?>
+                  <option value="<?=sn[i]?>"><?=sn[i]?>ルーム</option>
+                  <? } ?>
+              </select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ボタン類 -->
+			<div class="box4">
+				<div class="text-center">
+					<button type="button" class="btn btn-default" id="startBtn">
+						start
+					</button>
+				</div>
+			</div>
+		</main>
+    <?!= HtmlService.createHtmlOutputFromFile('js').getContent(); ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<!-- JQuery -->
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+		></script>
+		<!-- Bootstrap tooltips -->
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+		></script>
+		<!-- Bootstrap core JavaScript -->
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+		></script>
+		<!-- MDB core JavaScript -->
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+		></script>
+	</body>
+</html>
+ï

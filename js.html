@@ -1,0 +1,45 @@
+<script>
+    const speech = new webkitSpeechRecognition();
+    speech.lang = "ja-JP";
+  
+    // トリガーのボタン
+    const btn = document.getElementById("startBtn");
+    // 表示するエレメント
+    const content = document.getElementById("content");
+  
+    btn.addEventListener("click", function () {
+        // 音声認識をスタート
+        speech.start();
+    });
+  
+    //---------------追記---------------//
+    //音声自動文字起こし機能
+    speech.onresult = function (e) {
+      speech.stop();
+  
+      if (e.results[0].isFinal) {
+        // スピーチした言葉
+            var autotext = e.results[0][0].transcript;
+        // プルダウンの値を取得
+        var selsectRoom = document.getElementById('sources').value;
+        // gasに送る
+        google.script.run.dbaccess(selsectRoom, autotext);
+            console.log(e);
+            console.log(autotext);
+            content.innerHTML += "<div style='color:bule'>" + autotext + "</div>";
+        }
+    };
+  
+  speech.onend = () => {
+      speech.start();
+  };
+  
+  
+    // ルーム作成
+    function newRoom() {
+      var roomname = document.getElementById("roomName").value;
+      google.script.run.newRoom(roomname);
+      swal("ルームが作成されました", "お手数ですがページを更新してください", "success");
+    }
+  </script>
+  
